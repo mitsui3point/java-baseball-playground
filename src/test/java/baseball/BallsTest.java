@@ -1,6 +1,7 @@
 package baseball;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -15,20 +16,26 @@ public class BallsTest {
     }
 
     @Test
+    @DisplayName("위치와 숫자가 같으면 STRIKE")
     void strike() {
-        BallStatus status = answers.play(new Ball(1, 4));
+        Ball userBall = new Ball(1, 4);
+        BallStatus status = answers.play(userBall);
         assertThat(status).isEqualTo(BallStatus.STRIKE);
     }
 
     @Test
+    @DisplayName("위치가 다르고 숫자가 같으면 BALL")
     void ball() {
-        BallStatus status = answers.play(new Ball(2, 2));
+        Ball userBall = new Ball(2, 2);
+        BallStatus status = answers.play(userBall);
         assertThat(status).isEqualTo(BallStatus.BALL);
     }
 
     @Test
+    @DisplayName("위치가 다르고 숫자가 다르면 NOTHING")
     void nothing() {
-        BallStatus status = answers.play(new Ball(3, 6));
+        Ball userBall = new Ball(3, 6);
+        BallStatus status = answers.play(userBall);
         assertThat(status).isEqualTo(BallStatus.NOTHING);
     }
 }
