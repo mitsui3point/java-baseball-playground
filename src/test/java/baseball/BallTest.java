@@ -3,6 +3,8 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BallTest {
@@ -14,6 +16,7 @@ public class BallTest {
         BallStatus status = computer.play(user);
         assertThat(status).isEqualTo(BallStatus.STRIKE);
     }
+
     @Test
     @DisplayName("위치가 다르고 숫자가 같으면 BALL")
     void ball() {
@@ -22,6 +25,7 @@ public class BallTest {
         BallStatus status = computer.play(user);
         assertThat(status).isEqualTo(BallStatus.BALL);
     }
+
     @Test
     @DisplayName("위치가 다르고 숫자가 다르면 NOTHING")
     void nothing() {

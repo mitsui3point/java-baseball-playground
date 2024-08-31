@@ -20,9 +20,23 @@ public class Balls {
 
     public BallStatus play(Ball targetBall) {
         return balls.stream()
-                .map(ball -> ball.play(targetBall))
+                .map(targetBall::play)
                 .filter(BallStatus::isNotNothing)
                 .findFirst()
                 .orElse(BallStatus.NOTHING);
+    }
+
+    public BallResult play(List<Integer> targetBalls) {
+        BallResult ballResult = new BallResult(0, 0);
+        new Balls(targetBalls)
+                .getBalls()
+                .stream()
+                .map(this::play)
+                .forEach(ballResult::report);
+        return ballResult;
+    }
+
+    public List<Ball> getBalls() {
+        return this.balls;
     }
 }
